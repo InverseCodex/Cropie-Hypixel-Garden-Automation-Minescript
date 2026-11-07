@@ -13,6 +13,7 @@ FARMING_TIME_IN_MINUTES = 180
 BREAK_TIME_MINUTES = 2
 
 ## INITIALIZE VARIABLES
+
 YAW_DURING_FARMING = 0.0
 PITCH_DURING_FARMING = -57
 STARTING_DIRECTION = "left"  ## EITHER 'left' OR 'right'
@@ -31,6 +32,7 @@ def start_main():
     # Wait until both threads finish
     THREAD_1.join()
     THREAD_2.join()
+    return
 
     
 start_main()

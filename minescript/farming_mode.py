@@ -20,8 +20,8 @@ def update_pest(): # GETS HUD INFO, RETURNS PESTS INFO, IF RETURNED NONE, GARDEN
     pest_info = get_pest() # RUN THE FUNCTION FROM THE PYJINN SCRIPT TO EXTRACT TAB HUD INFO
     target_plot = ""
     # GET THE INFO FOR THE AMOUNT OF ALIVE PESTS AND INFESTED PLOT
-    
-    alive = int(pest_info['ALIVE'])
+    if pest_info:
+        alive = int(pest_info['ALIVE'])
     
     if alive > 0: # IF A PLOT IS INFESTED
         infested_plots = pest_info['PLOTS']
@@ -153,7 +153,7 @@ def main_farm(target_yaw,target_pitch,starting_direction,horizontal_bounds,verti
             # CHECK IF ALIVE > 4
             
             if alive >= 4:
-                ms.echo("PEST THRESHOLD REACHED")
+                ms.echo("PEST THRESHOLD REACHED",'\n')
                 time.sleep(1)
                 ms.echo("ENTERING PEST HUNTING MODE")
                 ms.player_press_left(False)
@@ -167,7 +167,7 @@ def main_farm(target_yaw,target_pitch,starting_direction,horizontal_bounds,verti
                 
         # CHECK IF PLAYER IS OUT OF BOUNDS
         if (x < x_bounds[0] - 2 or x > x_bounds[1] + 2) or (z < z_bounds[0] - 2 or z > z_bounds[1] + 2):
-            ms.echo("PLAYER OUT OF BOUNDS, RESTARTING SCRIPT")
+
             ms.execute(r'\main')
             return None
         
